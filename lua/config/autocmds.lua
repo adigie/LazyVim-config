@@ -8,3 +8,10 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     vim.bo.filetype = "dts"
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "*.zap",
+  callback = function()
+    vim.bo.filetype = "json"
+  end,
+})
