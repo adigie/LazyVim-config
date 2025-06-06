@@ -45,16 +45,18 @@ require("lazy").setup({
   },
 })
 
-require("lspconfig").clangd.setup({
-  cmd = {
-    "clangd",
-    "--background-index",
-    "--clang-tidy",
-    "--header-insertion=iwyu",
-    "--completion-style=detailed",
-    "--function-arg-placeholders",
-    "--fallback-style=llvm",
-    "--query-driver=/home/**/ncs/toolchains/**/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-**",
-    "--pch-storage=memory",
-  },
-})
+if not vim.g.vscode then
+  require("lspconfig").clangd.setup({
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=llvm",
+      "--query-driver=/home/**/ncs/toolchains/**/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-**",
+      "--pch-storage=memory",
+    },
+  })
+end
