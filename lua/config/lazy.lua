@@ -59,4 +59,10 @@ if not vim.g.vscode then
       "--pch-storage=memory",
     },
   })
+else
+  local vscode = require("vscode")
+
+  vim.keymap.set("n", "gJ", function()
+    vscode.action("references-view.findReferences")
+  end)
 end
