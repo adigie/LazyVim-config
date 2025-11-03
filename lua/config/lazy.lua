@@ -45,21 +45,7 @@ require("lazy").setup({
   },
 })
 
-if not vim.g.vscode then
-  require("lspconfig").clangd.setup({
-    cmd = {
-      "clangd",
-      "--background-index",
-      "--clang-tidy",
-      "--header-insertion=iwyu",
-      "--completion-style=detailed",
-      "--function-arg-placeholders",
-      "--fallback-style=llvm",
-      "--query-driver=/home/**/ncs/toolchains/**/opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-**",
-      "--pch-storage=memory",
-    },
-  })
-else
+if vim.g.vscode then
   local vscode = require("vscode")
 
   vim.keymap.set("n", "gJ", function()
